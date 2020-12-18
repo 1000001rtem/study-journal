@@ -1,1 +1,1 @@
-# study-table
+# study-journal

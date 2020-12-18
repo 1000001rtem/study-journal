@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "study-table-front": {
+    "study-journal-front": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/study-table-front",
+            "outputPath": "dist/study-journal-front",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "study-table-front:build"
+            "browserTarget": "study-journal-front:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "study-table-front:build:production"
+              "browserTarget": "study-journal-front:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "study-table-front:build"
+            "browserTarget": "study-journal-front:build"
           }
         },
         "test": {
@@ -110,15 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "study-table-front:serve"
+            "devServerTarget": "study-journal-front:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "study-table-front:serve:production"
+              "devServerTarget": "study-journal-front:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "study-table-front"
+  "defaultProject": "study-journal-front"
 }
