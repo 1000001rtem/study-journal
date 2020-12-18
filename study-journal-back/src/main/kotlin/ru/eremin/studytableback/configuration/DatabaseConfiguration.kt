@@ -12,5 +12,4 @@ class DatabaseConfiguration {
 
     @Bean
     fun userFieldAuditorAware(): AuditorAware<String> = UserAuditorAware()
-
 }

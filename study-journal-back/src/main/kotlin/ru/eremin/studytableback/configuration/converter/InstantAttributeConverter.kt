@@ -11,6 +11,7 @@ import javax.persistence.Converter
  */
 @Converter(autoApply = true)
 class InstantAttributeConverter : AttributeConverter<Instant?, Long?> {
+
     override fun convertToDatabaseColumn(attribute: Instant?): Long? {
         return if (Objects.isNull(attribute)) null else attribute!!.toEpochMilli()
     }
