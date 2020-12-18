@@ -8,7 +8,7 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "teachers")
+@Table(name = "teachers_table")
 class Teacher(
 
     @Id

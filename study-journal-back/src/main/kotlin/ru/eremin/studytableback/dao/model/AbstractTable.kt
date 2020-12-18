@@ -13,17 +13,17 @@ abstract class AbstractTable {
 
     @CreatedBy
     @Column(name = "create_user", nullable = false)
-    val createUser: String = "system"
+    var createUser: String = ""
 
     @CreatedDate
     @Column(name = "create_time", nullable = false)
-    val createTime: Instant = Instant.now()
+    var createTime: Instant = Instant.now()
 
     @LastModifiedBy
     @Column(name = "last_modify_user", nullable = false)
-    val lastModifiedUser: String = "system"
+    var lastModifiedUser: String = ""
 
     @LastModifiedDate
     @Column(name = "last_modify_time", nullable = false)
-    val lastModifiedTime: Instant = Instant.now()
+    var lastModifiedTime: Instant = Instant.now()
 }
