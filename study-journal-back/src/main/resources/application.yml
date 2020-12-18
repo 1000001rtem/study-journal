@@ -1,18 +1,18 @@
 server:
   port: 8080
   servlet:
-    context-path: /metadata-generator
+    context-path: /api
 
 spring:
   liquibase:
-    enabled: false
-#    change-log: classpath:/db/liquibase/changelog.xml
-#    parameters:
-#      schema: study_table
-#    url: jdbc:postgresql://localhost:5432/study_table_databse
-#    user: root
-#    password: 123123
-#  datasource:
-#    hikari:
-#      schema: study_table
-#      connection-init-sql: CREATE SCHEMA IF NOT EXISTS "study_table";
+    enabled: true
+    change-log: classpath:/db/db.changelog-master.xml
+    parameters:
+      schema: study_journal
+  datasource:
+    url: jdbc:postgresql://localhost:5432/study_journal_database
+    username: root
+    password: 123123
+    hikari:
+      schema: study_journal
+      connection-init-sql: CREATE SCHEMA IF NOT EXISTS "study_journal";
