@@ -6,4 +6,4 @@ import ru.eremin.studytableback.dao.model.Teacher
 import java.util.*
 
 @Repository
-interface TeacherRepository: JpaRepository<Teacher, UUID>
+interface TeacherRepository : JpaRepository<Teacher, UUID>

@@ -4,11 +4,11 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <changeSet id="create_teachers_table" author="Eremin Artem">
-        <createTable tableName="teachers_table" remarks="Таблица с преподавателями">
-            <column name="id" type="uuid" remarks="Идентификатор преподавателя">
+        <createTable tableName="teachers" remarks="Таблица с преподавателями">
+            <column name="teacher_id" type="uuid" remarks="Идентификатор преподавателя">
                 <constraints nullable="false"/>
             </column>
-            <column name="name" type="varchar(255)" remarks="Имя преподавателя">
+            <column name="first_name" type="varchar(255)" remarks="Имя преподавателя">
                 <constraints nullable="false"/>
             </column>
             <column name="surname" type="varchar(255)" remarks="Фамилия преподавателя">
@@ -44,7 +44,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addPrimaryKey tableName="teachers_table" columnNames="id"
+        <addPrimaryKey tableName="teachers" columnNames="id"
                        constraintName="pk_teachers"/>
     </changeSet>
 </databaseChangeLog>

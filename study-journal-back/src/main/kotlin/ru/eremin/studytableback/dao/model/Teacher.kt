@@ -8,14 +8,14 @@ import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "teachers_table")
+@Table(name = "teachers")
 class Teacher(
 
     @Id
-    @Column(name = "id")
+    @Column(name = "teacher_id")
     val id: UUID = UUID.randomUUID(),
 
-    @Column(name = "name")
+    @Column(name = "first_name")
     val name: String,
 
     @Column(name = "surname")
