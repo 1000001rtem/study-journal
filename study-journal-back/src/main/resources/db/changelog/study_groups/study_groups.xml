@@ -3,27 +3,9 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="create_teachers_table" author="Eremin Artem">
-        <createTable tableName="teachers" remarks="Таблица с преподавателями">
-            <column name="teacher_id" type="uuid" remarks="Идентификатор преподавателя">
-                <constraints nullable="false"/>
-            </column>
-            <column name="first_name" type="varchar(255)" remarks="Имя преподавателя">
-                <constraints nullable="false"/>
-            </column>
-            <column name="surname" type="varchar(255)" remarks="Фамилия преподавателя">
-                <constraints nullable="false"/>
-            </column>
-            <column name="patronymic" type="varchar(255)" remarks="Отчество преподавателя">
-                <constraints nullable="false"/>
-            </column>
-            <column name="email" type="varchar(255)" remarks="Отчество преподавателя">
-                <constraints nullable="false" unique="true"/>
-            </column>
-            <column name="password" type="varchar(255)" remarks="Шифрованный пароль">
-                <constraints nullable="false"/>
-            </column>
-            <column name="birthday" type="bigint" remarks="Unix-время дата рождения">
+    <changeSet id="create_study_groups_table" author="Eremin Artem">
+        <createTable tableName="study_groups" remarks="Таблица с учебными группами">
+            <column name="group_number" type="varchar(255)" remarks="Первичный ключ. Номер группы">
                 <constraints nullable="false"/>
             </column>
 
@@ -44,7 +26,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addPrimaryKey tableName="teachers" columnNames="teacher_id"
-                       constraintName="pk_teachers"/>
+        <addPrimaryKey tableName="study_groups" columnNames="group_number"
+                       constraintName="pk_study_groups"/>
     </changeSet>
 </databaseChangeLog>

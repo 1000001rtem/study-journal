@@ -2,10 +2,7 @@ package ru.eremin.studytableback.dao.model
 
 import java.time.Instant
 import java.util.*
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "students")
@@ -31,6 +28,10 @@ class Student(
     val password: String,
 
     @Column(name = "birthday")
-    val birthday: Instant
+    val birthday: Instant,
+
+    @ManyToOne
+    @Column(name = "group")
+    val group: StudyGroup? = null
 
 ) : AbstractTable()

@@ -23,8 +23,11 @@
             <column name="password" type="varchar(255)" remarks="Шифрованный пароль">
                 <constraints nullable="false"/>
             </column>
-            <column name="birthday" type="bigint" remarks="Unix-время добавления записи в таблицу">
+            <column name="birthday" type="bigint" remarks="Unix-время дата рождения">
                 <constraints nullable="false"/>
+            </column>
+            <column name="group" type="string" remarks="Учебная группа студента">
+                <constraints nullable="true"/>
             </column>
 
             <column name="create_user" type="varchar"
@@ -44,7 +47,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addPrimaryKey tableName="students" columnNames="id"
+        <addPrimaryKey tableName="students" columnNames="student_id"
                        constraintName="pk_students"/>
     </changeSet>
 </databaseChangeLog>
