@@ -1,0 +1,50 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="create_students_table" author="Eremin Artem">
+        <createTable tableName="students" remarks="Таблица со студентами">
+            <column name="student_id" type="uuid" remarks="Идентификатор студента">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)" remarks="Имя студента">
+                <constraints nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(255)" remarks="Фамилия студента">
+                <constraints nullable="false"/>
+            </column>
+            <column name="patronymic" type="varchar(255)" remarks="Отчество студента">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)" remarks="Отчество студента">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)" remarks="Шифрованный пароль">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birthday" type="bigint" remarks="Unix-время добавления записи в таблицу">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="create_user" type="varchar"
+                    remarks="Идентификатор пользователя/клиента, который добавлял запись">
+                <constraints nullable="false"/>
+            </column>
+            <column name="create_time" type="bigint" defaultValueComputed="${now}"
+                    remarks="Unix-время добавления записи в таблицу">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modify_user" type="varchar"
+                    remarks="Идентификатор пользователя/клиента, который редактировал(включая добваление) запись">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modify_time" type="bigint" defaultValueComputed="${now}"
+                    remarks="Unix-время последней модификации записи">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="students" columnNames="id"
+                       constraintName="pk_students"/>
+    </changeSet>
+</databaseChangeLog>

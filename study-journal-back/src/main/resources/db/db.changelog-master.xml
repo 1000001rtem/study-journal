@@ -7,4 +7,5 @@
     <property name="now" value="cast(extract(epoch from current_timestamp) * 1000.0 as bigint)"/>
 
     <include relativeToChangelogFile="true" file="changelog/teachers/teachers.xml"/>
+    <include relativeToChangelogFile="true" file="changelog/teachers/students.xml"/>
 </databaseChangeLog>
