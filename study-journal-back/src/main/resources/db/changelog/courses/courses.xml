@@ -17,7 +17,7 @@
             <column name="teacher_id" type="uuid" remarks="Преподаватель курса">
                 <constraints nullable="false"/>
             </column>
-            <column name="study_group" type="uuid" remarks="Группа которая проходит курс">
+            <column name="study_group" type="varchar" remarks="Группа которая проходит курс">
                 <constraints nullable="false"/>
             </column>
             <column name="active" type="boolean" remarks="Признак активности курса. Что он начался и не закончился">

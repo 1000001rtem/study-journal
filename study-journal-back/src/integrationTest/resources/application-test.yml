@@ -1,0 +1,12 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/db.changelog-master.xml
+    parameters:
+      schema: study_journal
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false;INIT=CREATE SCHEMA IF NOT EXISTS "study_journal_database"
+    username: sa
+    password:
+    hikari:
+      schema: study_journal

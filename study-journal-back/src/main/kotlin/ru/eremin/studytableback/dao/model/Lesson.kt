@@ -10,7 +10,7 @@ class Lesson(
 
     @Id
     @Column(name = "lesson_id")
-    val id: UUID,
+    val id: UUID = UUID.randomUUID(),
 
     @Column(name = "lesson_number")
     val number: Int,

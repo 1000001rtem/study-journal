@@ -31,7 +31,7 @@ class Student(
     val birthday: Instant,
 
     @ManyToOne
-    @JoinColumn(name = "group")
+    @JoinColumn(name = "group_number")
     val group: StudyGroup? = null,
 
     @OneToMany

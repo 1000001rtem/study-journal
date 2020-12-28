@@ -26,7 +26,7 @@
             <column name="birthday" type="bigint" remarks="Unix-время дата рождения">
                 <constraints nullable="false"/>
             </column>
-            <column name="group" type="varchar" remarks="Учебная группа студента">
+            <column name="group_number" type="varchar" remarks="Учебная группа студента">
                 <constraints nullable="true"/>
             </column>
 
