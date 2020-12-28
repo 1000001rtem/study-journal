@@ -3,30 +3,33 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet id="create_courses_table" author="Eremin Artem">
-        <createTable tableName="courses" remarks="Таблица с курсами">
-            <column name="course_id" type="uuid" remarks="Идентификатор курса">
+    <changeSet id="create_lessons_table" author="Eremin Artem">
+        <createTable tableName="lessons" remarks="Таблица с уроками">
+            <column name="lesson_id" type="uuid" remarks="Идентификатор урока">
                 <constraints nullable="false"/>
             </column>
-            <column name="course_name" type="varchar(255)" remarks="Название курса">
+            <column name="lesson_number" type="smallint" remarks="Порядковый номер урока">
                 <constraints nullable="false"/>
             </column>
-            <column name="description" type="varchar(255)" remarks="Описание курса">
+            <column name="study_group" type="varchar" remarks="Учебная группа">
+                <constraints nullable="false"/>
+            </column>
+            <column name="course_id" type="uuid" remarks="В рамках какого курса было занятие">
+                <constraints nullable="false"/>
+            </column>
+            <column name="teacher_id" type="uuid" remarks="Преподаватель">
+                <constraints nullable="false"/>
+            </column>
+            <column name="theme" type="varchar" remarks="Тема урока">
+                <constraints nullable="false"/>
+            </column>
+            <column name="homework" type="varchar" remarks="Домашнее задание">
                 <constraints nullable="true"/>
             </column>
-            <column name="teacher_id" type="uuid" remarks="Преподаватель курса">
+            <column name="lesson_date" type="bigint" remarks="Unix-время проведения урока">
                 <constraints nullable="false"/>
             </column>
-            <column name="study_group" type="uuid" remarks="Группа которая проходит курс">
-                <constraints nullable="false"/>
-            </column>
-            <column name="active" type="boolean" remarks="Признак активности курса. Что он начался и не закончился">
-                <constraints nullable="true"/>
-            </column>
-            <column name="start_date" type="bigint" remarks="Unix-время начала курса">
-                <constraints nullable="true"/>
-            </column>
-            <column name="end_date" type="bigint" remarks="Unix-время окончания курса">
+            <column name="note" type="varchar" remarks="Примечание к уроку">
                 <constraints nullable="true"/>
             </column>
 
@@ -47,7 +50,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
-        <addPrimaryKey tableName="courses" columnNames="course_id"
-                       constraintName="pk_courses"/>
+        <addPrimaryKey tableName="lessons" columnNames="lesson_id"
+                       constraintName="pk_lessons"/>
     </changeSet>
 </databaseChangeLog>

@@ -16,14 +16,14 @@ class Course(
     val name: String,
 
     @Column(name = "description")
-    val description: String,
+    val description: String? = null,
 
     @ManyToOne
-    @Column(name = "teacher_id")
+    @JoinColumn(name = "teacher_id")
     val teacher: Teacher,
 
     @ManyToOne
-    @Column(name = "study_group")
+    @JoinColumn(name = "study_group")
     val studyGroup: StudyGroup,
 
     @Column(name = "active")
@@ -35,4 +35,7 @@ class Course(
     @Column(name = "end_date")
     val endDate: Instant? = null,
 
-    ) : AbstractTable()
+    @OneToMany
+    val lessons: List<Lesson> = emptyList()
+
+) : AbstractTable()

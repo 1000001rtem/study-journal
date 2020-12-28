@@ -11,9 +11,9 @@ class StudyGroup(
     val groupNumber: String,
 
     @OneToMany
-    val students: List<Student>,
+    val students: List<Student> = emptyList(),
 
     @OneToMany
-    val courses: List<Course>
+    val courses: List<Course> = emptyList()
 
 ) : AbstractTable()

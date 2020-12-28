@@ -31,7 +31,10 @@ class Student(
     val birthday: Instant,
 
     @ManyToOne
-    @Column(name = "group")
-    val group: StudyGroup? = null
+    @JoinColumn(name = "group")
+    val group: StudyGroup? = null,
+
+    @OneToMany
+    val marks: List<Mark> = emptyList()
 
 ) : AbstractTable()

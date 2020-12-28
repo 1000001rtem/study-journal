@@ -10,4 +10,6 @@
     <include relativeToChangelogFile="true" file="changelog/students/students.xml"/>
     <include relativeToChangelogFile="true" file="changelog/courses/courses.xml"/>
     <include relativeToChangelogFile="true" file="changelog/study_groups/study_groups.xml"/>
+    <include relativeToChangelogFile="true" file="changelog/marks/marks.xml"/>
+    <include relativeToChangelogFile="true" file="changelog/lessons/lessons.xml"/>
 </databaseChangeLog>
