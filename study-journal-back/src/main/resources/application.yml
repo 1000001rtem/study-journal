@@ -16,3 +16,8 @@ spring:
     hikari:
       schema: study_journal
       connection-init-sql: CREATE SCHEMA IF NOT EXISTS "study_journal";
+
+security:
+  jwt:
+    token:
+      expire-length: 600000

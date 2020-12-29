@@ -1,13 +1,15 @@
 package ru.eremin.studytableback.error
 
-import ru.eremin.studytableback.error.ErrorType.BUSINESS
+import ru.eremin.studytableback.error.ErrorType.AUTH
 
 /**
  * Коды ошибок приложения. Может ковертироваться в исключение
  */
 enum class ErrorCode : Error {
 
-    TEST_ERROR(type = BUSINESS, message = "Test error", displayMessage = "Тестовый код ошибки");
+    INVALID_TOKEN(AUTH, "Invalid token: %s", "Ошибка авторизации"),
+    EXPIRED_TOKEN(AUTH, "Expired token", "Разъединено. Просьба переавторизоваться")
+    ;
 
     override val type: ErrorType
     override val message: String
