@@ -20,6 +20,13 @@ class JwtTokenProvider(
     @Value("\${security.jwt.token.expire-length:3600000}")
     private val validityInMilliseconds: Long = 0
 
+    /**
+     * Создание токена
+     *
+     * @param username имя пользоватея
+     * @param roles список ролей пользователя
+     * @return JWT токен
+     */
     fun createToken(username: String, roles: List<String?>): String {
         val claims = Jwts.claims().setSubject(username)
         claims.put("roles", roles)
