@@ -1,10 +1,10 @@
-package ru.eremin.studytableback.util.security
+package ru.eremin.studytableback.security
 
 import io.jsonwebtoken.*
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
-import ru.eremin.studytableback.error.ErrorCode
+import ru.eremin.studytableback.error.ErrorCode.*
 import java.security.Key
 import java.util.*
 import javax.servlet.http.HttpServletRequest
@@ -24,12 +24,12 @@ class JwtTokenProvider(
      * Создание токена
      *
      * @param username имя пользоватея
-     * @param roles список ролей пользователя
+     * @param role роль пользователя
      * @return JWT токен
      */
-    fun createToken(username: String, roles: List<String?>): String {
+    fun createToken(username: String, role: Role): String {
         val claims = Jwts.claims().setSubject(username)
-        claims.put("roles", roles)
+        claims.put("role", role)
         val now = Date()
         val validity = Date(now.time + validityInMilliseconds)
         return Jwts.builder()
@@ -43,11 +43,11 @@ class JwtTokenProvider(
     /**
      * Получение токена
      *
-     * @param servletRequest http реквест
+     * @param request http реквест
      * @return "чистый" токен без "Beaver"
      */
-    fun resolveToken(servletRequest: HttpServletRequest): String? {
-        val bearerToken = servletRequest.getHeader("Authorization")
+    fun resolveToken(request: HttpServletRequest): String? {
+        val bearerToken = request.getHeader("Authorization")
         return if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             bearerToken.substring(7)
         } else null
@@ -73,19 +73,26 @@ class JwtTokenProvider(
      * @throws StudyJournalException в случае если токен не прошёл проверку
      */
     fun validateToken(token: String?) {
-        if (token.isNullOrBlank()) throw ErrorCode.EXPIRED_TOKEN.formatMessage(token).asException()
+        if (token.isNullOrBlank()) throw INVALID_TOKEN.formatMessage(token).asException()
         try {
             val claims: Jws<Claims> = Jwts.parserBuilder().setSigningKey(secretKey)
                 .build()
                 .parseClaimsJws(token)
 
             if (claims.body.expiration.before(Date())) {
-                throw ErrorCode.EXPIRED_TOKEN.asException()
+                throw EXPIRED_TOKEN.asException()
             }
         } catch (e: JwtException) {
-            throw ErrorCode.EXPIRED_TOKEN.formatMessage(token).asException()
+            throw INVALID_TOKEN.formatMessage(token).asException()
         } catch (e: IllegalArgumentException) {
-            throw ErrorCode.EXPIRED_TOKEN.formatMessage(token).asException()
+            throw INVALID_TOKEN.formatMessage(token).asException()
         }
     }
+
+    fun getUserRole(token: String?): Role =
+        Jwts.parserBuilder().setSigningKey(secretKey)
+            .build()
+            .parseClaimsJws(token)
+            .body
+            .get("role", Role::class.java)
 }
