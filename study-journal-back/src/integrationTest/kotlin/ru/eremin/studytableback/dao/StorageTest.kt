@@ -61,7 +61,7 @@ class StorageTest {
 
         studyGroupRepository.save(studyGroup)
 
-        val course  =Course(
+        val course = Course(
             name = "testCourse",
             teacher = teacher,
             studyGroup = studyGroup
