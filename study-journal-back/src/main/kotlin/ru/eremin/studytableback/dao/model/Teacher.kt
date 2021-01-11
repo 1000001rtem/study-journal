@@ -22,7 +22,7 @@ class Teacher(
     val surname: String,
 
     @Column(name = "patronymic")
-    val patronymic: String,
+    val patronymic: String? = null,
 
     @Column(name = "email")
     val email: String,
