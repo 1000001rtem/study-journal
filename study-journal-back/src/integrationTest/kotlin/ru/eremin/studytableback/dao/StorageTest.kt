@@ -1,6 +1,7 @@
 package ru.eremin.studytableback.dao
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
@@ -99,5 +100,6 @@ class StorageTest {
 
         assertEquals(student.id, result.id.student.id)
         assertEquals(lesson.id, result.id.lesson.id)
+        assertNull(teacherRepository.findByEmail(null))
     }
 }

@@ -6,4 +6,6 @@ import ru.eremin.studytableback.dao.model.Student
 import java.util.*
 
 @Repository
-interface StudentRepository : JpaRepository<Student, UUID>
+interface StudentRepository : JpaRepository<Student, UUID> {
+    fun findByEmail(email: String?): Student?
+}
