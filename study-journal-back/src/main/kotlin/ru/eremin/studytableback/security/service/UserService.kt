@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
+import ru.eremin.studytableback.controller.dto.UserDto
 import ru.eremin.studytableback.dao.repository.StudentRepository
 import ru.eremin.studytableback.dao.repository.TeacherRepository
 import ru.eremin.studytableback.error.ErrorCode
@@ -53,4 +54,17 @@ class UserService(
             Role.STUDENT -> studentRepository.findByEmail(email)?.id
             Role.ADMIN -> throw ErrorCode.UNSUPPORTED.asException() //TODO: исправить после добавления админки
         }
+
+    /**
+     * Создание нового пользователя
+     *
+     * @param user новый пользователь
+     */
+    fun createUser(user: UserDto) {
+        when (user.role) {
+            Role.TEACHER -> teacherRepository.save(user.toTeacher())
+            Role.STUDENT -> studentRepository.save(user.toStudent())
+            Role.ADMIN -> throw ErrorCode.UNSUPPORTED.asException() //TODO: исправить после добавления админки
+        }
+    }
 }
