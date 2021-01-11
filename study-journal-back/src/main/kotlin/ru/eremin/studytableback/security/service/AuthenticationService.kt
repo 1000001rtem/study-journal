@@ -4,7 +4,6 @@ import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import org.springframework.stereotype.Service
 import ru.eremin.studytableback.controller.dto.AuthRequest
 import ru.eremin.studytableback.controller.dto.AuthResponse
 import ru.eremin.studytableback.error.ErrorCode
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest
 /**
  * Сервис авторизации
  */
-@Service
 class AuthenticationService(
     private val userService: UserService,
     private val tokenProvider: JwtTokenProvider,

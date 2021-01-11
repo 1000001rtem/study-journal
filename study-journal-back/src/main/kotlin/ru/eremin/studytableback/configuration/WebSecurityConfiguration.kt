@@ -9,16 +9,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import ru.eremin.studytableback.filter.JwtTokenFilter
+import ru.eremin.studytableback.security.JwtTokenProvider
 import ru.eremin.studytableback.security.service.AuthenticationService
+import ru.eremin.studytableback.security.service.UserService
 
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfiguration(
-    private val authenticationService: AuthenticationService
+    private val userService: UserService,
+    private val jwtTokenProvider: JwtTokenProvider
 ) : WebSecurityConfigurerAdapter() {
 
     @Bean
     fun passwordEncoder() = BCryptPasswordEncoder()
+
+    @Bean
+    fun authenticationService() = AuthenticationService(userService, jwtTokenProvider, passwordEncoder())
 
     override fun configure(web: WebSecurity) {
         web.ignoring().antMatchers("/auth", "/registration")
@@ -33,7 +39,7 @@ class WebSecurityConfiguration(
             .csrf()
             .disable()
             .addFilterBefore(
-                JwtTokenFilter(authenticationService),
+                JwtTokenFilter(authenticationService()),
                 UsernamePasswordAuthenticationFilter::class.java
             )
     }
