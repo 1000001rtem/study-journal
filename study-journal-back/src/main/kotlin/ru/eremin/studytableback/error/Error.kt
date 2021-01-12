@@ -20,7 +20,7 @@ interface Error {
      * @param values значения для форматирования
      * @return Error
      */
-    fun formatMessage(vararg values: Any): Error =
+    fun formatMessage(vararg values: Any?): Error =
         FormattedError(type, message.format(*values), displayMessage)
 
     /**
@@ -33,7 +33,7 @@ interface Error {
      * @param values значения для форматирования
      * @return Error
      */
-    fun formatDisplayMessage(vararg values: Any): Error =
+    fun formatDisplayMessage(vararg values: Any?): Error =
         FormattedError(type, message, displayMessage?.format(*values))
 
     /**
@@ -46,7 +46,7 @@ interface Error {
      * @param values значения для форматирования
      * @return Error
      */
-    fun formatBothMessages(vararg values: Any): Error =
+    fun formatBothMessages(vararg values: Any?): Error =
         FormattedError(type, message.format(*values), displayMessage?.format(*values))
 
     /**

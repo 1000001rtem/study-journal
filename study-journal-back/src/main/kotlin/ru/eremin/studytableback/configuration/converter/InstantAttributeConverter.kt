@@ -1,7 +1,6 @@
 package ru.eremin.studytableback.configuration.converter
 
 import java.time.Instant
-import java.util.*
 import javax.persistence.AttributeConverter
 import javax.persistence.Converter
 
@@ -12,11 +11,7 @@ import javax.persistence.Converter
 @Converter(autoApply = true)
 class InstantAttributeConverter : AttributeConverter<Instant?, Long?> {
 
-    override fun convertToDatabaseColumn(attribute: Instant?): Long? {
-        return if (Objects.isNull(attribute)) null else attribute!!.toEpochMilli()
-    }
+    override fun convertToDatabaseColumn(attribute: Instant?): Long? = attribute?.toEpochMilli()
 
-    override fun convertToEntityAttribute(value: Long?): Instant? {
-        return if (Objects.isNull(value)) null else Instant.ofEpochMilli(value!!)
-    }
+    override fun convertToEntityAttribute(value: Long?): Instant = Instant.ofEpochMilli(value!!)
 }
