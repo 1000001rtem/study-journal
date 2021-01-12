@@ -18,7 +18,7 @@ class JwtTokenProvider(
 ) {
 
     @Value("\${security.jwt.token.expire-length:3600000}")
-    private val validityInMilliseconds: Long = 0
+    private val validityInMilliseconds: Long = 36000000L
 
     /**
      * Создание токена
