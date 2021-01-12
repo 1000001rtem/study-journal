@@ -6,7 +6,9 @@ jobs:
     name: Backend Tests
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Tests
-        run: ./gradlew clean test
+        run: cd study-journal-back && ./gradlew clean test
       - name: Integration tests
-        run: ./gradlew clean integrationTest
+        run: cd study-journal-back &&./gradlew clean integrationTest
