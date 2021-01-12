@@ -94,5 +94,6 @@ class JwtTokenProvider(
             .build()
             .parseClaimsJws(token)
             .body
-            .get("role", Role::class.java)
+            .get("role", String::class.java)
+            .let { Role.valueOf(it.toUpperCase()) }
 }

@@ -3,6 +3,7 @@ package ru.eremin.studytableback.filter
 import org.slf4j.LoggerFactory
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.web.filter.GenericFilterBean
+import ru.eremin.studytableback.error.StudyJournalException
 import ru.eremin.studytableback.security.service.AuthenticationService
 import javax.servlet.FilterChain
 import javax.servlet.ServletRequest
@@ -27,7 +28,7 @@ class JwtTokenFilter(
 
         try {
             authenticationService.authenticate(request)
-        } catch (e: Exception) {
+        } catch (e: StudyJournalException) {
             SecurityContextHolder.clearContext()
             log.info("Auth error with token: ${request.getHeader("Authorization")}")
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED)
