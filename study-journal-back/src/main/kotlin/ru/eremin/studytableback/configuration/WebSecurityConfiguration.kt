@@ -27,7 +27,7 @@ class WebSecurityConfiguration(
     fun authenticationService() = AuthenticationService(userService, jwtTokenProvider, passwordEncoder())
 
     override fun configure(web: WebSecurity) {
-        web.ignoring().antMatchers("/auth", "/registration")
+        web.ignoring().antMatchers("/v1/auth", "/v1/registration")
     }
 
     override fun configure(http: HttpSecurity) {
