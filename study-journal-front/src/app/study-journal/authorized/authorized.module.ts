@@ -1,15 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AuthorizedComponent} from './authorized.component';
-import {MainComponent} from '../unauthorized/main/main.component';
-import {LoginComponent} from '../unauthorized/login/login.component';
-import {RegistrationComponent} from '../unauthorized/registration/registration.component';
+import {AuthorizedRoutingModule} from './authorized-routing.module';
 
 
 @NgModule({
-  declarations: [AuthorizedComponent, MainComponent, LoginComponent, RegistrationComponent],
+  declarations: [AuthorizedComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    AuthorizedRoutingModule
   ],
   exports: [AuthorizedComponent]
 })
