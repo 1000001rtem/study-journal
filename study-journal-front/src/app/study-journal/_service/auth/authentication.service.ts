@@ -5,6 +5,7 @@ import {Role} from '../../_model/role';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {environment} from 'src/environments/environment';
+import {Response} from '../../_model/response';
 
 /**
  * Сервис аутентификации
@@ -24,7 +25,10 @@ export class AuthenticationService {
    * Предоставление текущего авторизированный пользователя
    * @returns текущий авторизированный пользователь
    */
-  getCurrentUser = (): CurrentUser => JSON.parse(this.storage.getItem('currentUser"'));
+  getCurrentUser(): CurrentUser {
+    const u = this.storage.getItem('currentUser');
+    return JSON.parse(u);
+  }
 
   /**
    * Авторизация
@@ -36,12 +40,12 @@ export class AuthenticationService {
    * @returns Observable<CurrentUser> авторизованного пользовтеля
    */
   login = (login: string, password: string, role: Role): Observable<CurrentUser> => {
-    return this.httpClient.post(environment.apiUrl + '/auth', {
+    return this.httpClient.post(environment.apiUrl + '/v1/auth', {
       login,
       password,
       role
-    }).pipe(map(user => {
-      const currentUser = user as CurrentUser;
+    }).pipe(map((response: Response) => {
+      const currentUser = response.data as CurrentUser;
       if (currentUser && currentUser.token) {
         this.storage.setItem('currentUser', JSON.stringify(currentUser));
       }
