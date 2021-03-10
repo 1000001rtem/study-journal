@@ -12,7 +12,7 @@ export class User {
 
 export class CurrentUser {
   id: string;
-  email: string;
+  login: string;
   token: string;
   role: Role;
 }
