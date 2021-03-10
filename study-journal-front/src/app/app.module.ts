@@ -8,11 +8,15 @@ import {ErrorComponent} from './error/error.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FooterComponent} from './footer/footer.component';
+import {HeaderComponent} from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent
+    ErrorComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
