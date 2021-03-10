@@ -1,0 +1,12 @@
+<div>
+  <p *ngIf="currentUser">
+    {{currentUser.login}}
+    |
+    <a routerLink="/main" (click)="logout()">Выйти</a>
+  </p>
+  <p *ngIf="!currentUser">
+    <a routerLink="/login">Войти</a>
+    |
+    <a routerLink="/login">Регистрация</a>
+  </p>
+</div>
