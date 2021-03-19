@@ -1,0 +1,27 @@
+name: Build
+
+on: push
+
+jobs:
+  push:
+    name: Frontend push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Use Node.js 12.8
+        uses: actions/setup-node@v1
+        with:
+         node-version: 12.8
+      - name: Install 
+        working-directory: ./study-journal-front
+        run:  npm install
+      - name: Build
+        working-directory: ./study-journal-front
+        run: npm run-script build
+      - name: Lint
+        working-directory: ./study-journal-front
+        run: npm run lint
+      - name: Tests
+        working-directory: ./study-journal-front
+        run: npm test

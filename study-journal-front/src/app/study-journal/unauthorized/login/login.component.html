@@ -1,0 +1,25 @@
+<div class="login-form-container">
+  <form [formGroup]="loginForm" (submit)="submit()" novalidate>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Электронная почта
+      </mat-label>
+      <input matInput formControlName="login">
+      <mat-error *ngIf="loginForm.controls.login.touched && loginForm.controls.login.invalid">
+        <span *ngIf="loginForm.controls.login.errors.required">Обязательное поле</span>
+        <span *ngIf="loginForm.controls.login.errors.pattern">Неверный формат</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label> Пароль
+      </mat-label>
+      <input matInput formControlName="password" type="password">
+      <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+        <span *ngIf="loginForm.controls.password.errors.required">Обязательное поле</span>
+        <span *ngIf="loginForm.controls.password.errors.minlength">Пароль не может быть короче {{MIN_PASSWORD_LENGTH}}
+          символов</span>
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Войти</button>
+  </form>
+</div>

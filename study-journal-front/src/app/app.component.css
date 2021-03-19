@@ -1,0 +1,22 @@
+header {
+  background-color: gray;
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*width: 100%;*/
+  height: 60px;
+  line-height: 60px;
+}
+
+footer {
+  background-color: gray;
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*width: 100%;*/
+  height: 60px;
+  line-height: 60px;
+}
+
+main {
+  height: 100%;
+  background-color: green;
+}
