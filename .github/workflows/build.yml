@@ -3,7 +3,7 @@ name: Build
 on: push
 
 jobs:
-  backend-tests:
+  backend-build:
     name: Backend build
     runs-on: ubuntu-latest
     steps:
@@ -11,3 +11,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: cd study-journal-back && ./gradlew clean build
+  frontend-build:
+    name: Frontend build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build
+        run: cd study-journal-front && npm run-script build
