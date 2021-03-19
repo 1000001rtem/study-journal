@@ -51,7 +51,7 @@ export class AuthenticationService {
       }
       return currentUser;
     }));
-  };
+  }
 
   logout = () => localStorage.removeItem('currentUser');
 }

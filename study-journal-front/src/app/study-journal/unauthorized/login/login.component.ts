@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
   private createForm(): void {
@@ -52,5 +52,5 @@ export class LoginComponent implements OnInit {
         error => {
           console.log(error); // todo
         });
-  };
+  }
 }
